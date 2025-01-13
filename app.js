@@ -118,6 +118,12 @@ async function handleImageUpload(event) {
             canvas.height = height * scale;
             
             const ctx = canvas.getContext('2d');
+            
+            // Fill white background first
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Then draw the image on top
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
             
             const filename = `icon-${width}${scale > 1 ? `@${scale}x` : ''}${spec.idiom === 'ipad' ? '-ipad' : ''}.png`;
